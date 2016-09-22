@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style>
+#box{
+    height:200px;
+    width:200px;
+    line-height:200px;
+    text-align: center;
+    font-weight: bold;
+    color:white;
+    background:red;
+    margin:2000px 0;
+}
+</style>
+</head>
+<body>
+
+
+<div id="box">Hello!</div>
+
+
+<script src="../sonar.js"></script>
+<script type="text/javascript">
+(function(){
+    
+    //sonar.
+    sonar.addSonar(document.getElementById('box'), {
+        px: 0,
+        evt: 'scrollin',
+        callback: function(){    
+            console.log('box is in')
+        }
+    });
+
+    sonar.addSonar(document.getElementById('box'), {
+        px: 0,
+        evt: 'scrollout',
+        callback: function(){    
+            console.log('box is out')
+        }
+    });
+
+})();
+</script>
+</body>
+</html>
