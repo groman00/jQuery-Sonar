@@ -1,0 +1,27 @@
+{
+  "name": "sonar",
+  "version": "1.0.0",
+  "description": "detect html elements when scrolling",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "npm run build-debug && npm run build-min",
+    "build-debug": "browserify sonar.js -s sonar -o dist/sonar.js",
+    "build-min": "uglifyjs dist/sonar.js --comments '/!/' -m screw_ie8=true -c screw_ie8=true,unused=false -o dist/sonar.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groman00/jQuery-Sonar.git"
+  },
+  "author": "artzstudio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/groman00/jQuery-Sonar/issues"
+  },
+  "homepage": "https://github.com/groman00/jQuery-Sonar",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "uglify": "^0.1.5"
+  }
+}
