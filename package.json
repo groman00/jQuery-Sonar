@@ -2,6 +2,7 @@
   "name": "sonar",
   "version": "1.0.0",
   "description": "detect html elements when scrolling",
+  "main": "sonar.js",
   "directories": {
     "example": "examples"
   },
