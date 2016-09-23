@@ -26,7 +26,7 @@
                 px: 0,
                 evt: 'scrollin',
                 callback: function(){    
-                    console.log('box is in')
+                    console.log('box is on screen', this);
                 }
             });
 
@@ -34,7 +34,7 @@
                 px: 0,
                 evt: 'scrollout',
                 callback: function(){    
-                    console.log('box is out')
+                    console.log('box is off screen', this);
                 }
             });
 

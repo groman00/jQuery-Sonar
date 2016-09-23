@@ -60,7 +60,6 @@ Sonar.prototype.detect = function(elem, distance, full) {
 };
 
 Sonar.prototype.addSonar = function(elem, options) {
-
     var distance = options.px;
     var full = options.full;
     var screenEvent = options.evt;
@@ -72,7 +71,7 @@ Sonar.prototype.addSonar = function(elem, options) {
     // If the elem is not detected (offscreen) or detected (onscreen)
     // trigger the event and fire the callback immediately.
     if (screenEvent === offScreenEvent ? !detected : detected) {
-        options.callback && options.callback.apply(null, []);
+        options.callback && options.callback.apply(elem, []);
         triggered = 1;
 
         // Otherwise, add it to the polling queue.
@@ -102,7 +101,6 @@ Sonar.prototype.poll = function() {
     pollId && clearTimeout(pollId);
     
     pollId = setTimeout(function() {
-        
         var elem, elems, screenEvent, options, detected, i, l;
 
         for (screenEvent in pollQueue) {
@@ -116,22 +114,17 @@ Sonar.prototype.poll = function() {
                 // If the elem is not detected (offscreen) or detected (onscreen)
                 // remove the elem from the queue and fire the callback.
                 if (screenEvent === offScreenEvent ? !detected : detected) {
-                    
                     if (!options.tr) {
-                    
                         if (elem['_' + screenEvent]) {
-
                             // Trigger the onscreen or offscreen event depending
                             // on the desired event.
-                            options.callback && options.callback.apply(null, []);
+                            options.callback && options.callback.apply(elem, []);
                             options.tr = 1;
-
                             // removeSonar was called on this element, clean it up
                             // instead of triggering the event.
                         } else {
                             // Remove this object from the elem poll container.
                             elems.splice(i, 1);
-
                             // Decrement the counter and length because we just removed
                             // one from it.
                             i--;

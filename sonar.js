@@ -70,7 +70,7 @@ Sonar.prototype.addSonar = function(elem, options) {
     // If the elem is not detected (offscreen) or detected (onscreen)
     // trigger the event and fire the callback immediately.
     if (screenEvent === offScreenEvent ? !detected : detected) {
-        options.callback && options.callback.apply(null, []);
+        options.callback && options.callback.apply(elem, []);
         triggered = 1;
 
         // Otherwise, add it to the polling queue.
@@ -117,7 +117,7 @@ Sonar.prototype.poll = function() {
                         if (elem['_' + screenEvent]) {
                             // Trigger the onscreen or offscreen event depending
                             // on the desired event.
-                            options.callback && options.callback.apply(null, []);
+                            options.callback && options.callback.apply(elem, []);
                             options.tr = 1;
                             // removeSonar was called on this element, clean it up
                             // instead of triggering the event.
